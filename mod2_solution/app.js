@@ -4,23 +4,22 @@
   angular.module('ShoppingComponentApp', [])
     .controller('BuyController', BuyController)
     .controller('BoughtController', BoughtController)
-    .service('ShoppingService',ShoppingService);
+    .service('ShoppingListCheckOffService',ShoppingService);
 
-  BuyController.$inject = ['$scope', 'ShoppingService'];
+  BuyController.$inject = ['ShoppingListCheckOffService'];
+  function BuyController(ShoppingListCheckOffService) {
 
-  function BuyController($scope, ShoppingService) {
+    this.items = ShoppingListCheckOffService.getBuy();
 
-    $scope.items = ShoppingService.getBuy();
-
-    $scope.bought = function (idx) {
-	    ShoppingService.bought(idx);
+	  this.bought = function (idx) {
+	    ShoppingListCheckOffService.bought(idx);
     };
   }
 
-  BoughtController.$inject = ['$scope', 'ShoppingService'];
-  function BoughtController($scope, ShoppingService) {
+  BoughtController.$inject = ['ShoppingListCheckOffService'];
+  function BoughtController(ShoppingListCheckOffService) {
 
-      $scope.items = ShoppingService.getBought();
+      this.items = ShoppingListCheckOffService.getBought();
   }
 
   function ShoppingService() {
