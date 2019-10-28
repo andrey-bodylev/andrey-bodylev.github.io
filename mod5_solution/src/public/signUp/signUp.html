@@ -1,0 +1,62 @@
+<div class="container">
+  <fieldset>
+    <legend>Registration</legend>
+    <form name='regForm' novalidate>
+
+      <input type="text" name="firstname" placeholder="Pick a firstname"
+             ng-model="sUctrl.user.firstname"
+             required>
+      <span
+              ng-if="regForm.firstname.$error.required && regForm.firstname.$touched">
+            Please enter first name
+          </span>
+      <br>
+
+      <input type="text" name="lastname" placeholder="Pick a lastname"
+             ng-model="sUctrl.user.lastname"
+             required>
+      <span
+              ng-if="regForm.lastname.$error.required && regForm.lastname.$touched">
+            Please enter last name
+          </span>
+      <br>
+
+      <input type="email" name="email" placeholder="Email"
+             ng-model="sUctrl.user.email"
+             required>
+      <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+      <br>
+
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+             ng-model="sUctrl.user.phone"
+             pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+      <br>
+
+      <input type="text" name="dish" placeholder="Pick a favourite dish"
+             ng-model="sUctrl.user.dish">
+      <span
+              ng-if="regForm.dish.$error.required && regForm.dish.$touched">
+            Please enter favourite dish
+          </span>
+      <br>
+
+      <button
+              ng-disabled="regForm.$invalid"
+              ng-click="sUctrl.submit()">Submit</button>
+      <br>
+    </form>
+    <span
+            ng-if="sUctrl.success === false">
+            No such menu number exists
+          </span>
+    <span
+            ng-if="sUctrl.success">
+            Your information has been saved
+          </span>
+  </fieldset>
+</div>

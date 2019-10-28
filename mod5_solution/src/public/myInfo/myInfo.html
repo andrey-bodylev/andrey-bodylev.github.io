@@ -1,0 +1,36 @@
+<div ng-if="!mIctrl.isSigned()" class="container">
+<span>
+    Not Signed Up Yet
+</span>
+<br>
+<a ui-sref="public.signUp">Sign up Now!</a>
+</div>
+
+<div ng-if="mIctrl.isSigned()" class="container">
+    <span>
+    {{ mIctrl.getUser().firstname }}
+    </span>
+    <br>
+    <span>
+    {{ mIctrl.getUser().lastname }}
+    </span>
+    <br>
+    <span>
+    {{ mIctrl.getUser().phone }}
+    </span>
+    <br>
+    <span>
+    {{ mIctrl.getUser().email }}
+    </span>
+    <br>
+    <br>
+    <span>
+    {{ mIctrl.getUser().dish_name }}
+    </span>
+    <br>
+    <span>
+    {{ mIctrl.getUser().dish_descr }}
+    </span>
+    <br>
+    <img ng-src="{{mIctrl.getUser().dish_url}}"/>
+</div>
